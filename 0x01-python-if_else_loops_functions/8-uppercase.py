@@ -1,4 +1,4 @@
-# !/usr/bin/python3
+#!/usr/bin/python3
 def uppercase(str):
     for letter in str:
         isLowercase = ord(letter) >= 97 and ord(letter) <= 122
