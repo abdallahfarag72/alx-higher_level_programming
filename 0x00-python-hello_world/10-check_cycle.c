@@ -11,20 +11,16 @@
 
 int check_cycle(listint_t *list)
 {
-	listint_t *p1, *p2;
+	listint_t *tortois, *hare;
 
-	p1 = list;
-	while (p1)
+	tortois = hare = list;
+	while (hare && hare->next)
 	{
-		p2 = list;
-		p1 = p1->next;
+		tortois = tortois->next;
+		hare = hare->next->next;
 
-		while (p1 != p2->next)
-		{
-			if (p1 == p2)
-				return (1);
-			p2 = p2->next;
-		}
+		if (tortois == hare)
+			return (1);
 	}
 	return (0);
 }
