@@ -22,16 +22,6 @@ class Square:
         self.__size = size
         self.__position = position
 
-        if not isinstance(value, int):
-            raise TypeError("size must be an integer")
-        elif value < 0:
-            raise ValueError("size must be >= 0")
-
-        if not isinstance(value, tuple) or len(value) != 2 or \
-                not all(isinstance(num, int) for num in value) or \
-                not all(num >= 0 for num in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-
     @property
     def size(self):
         """
