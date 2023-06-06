@@ -1,0 +1,38 @@
+The text_indentation module
+==========================
+
+Using text_indentation
+----------------------
+
+First import text_indentation:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Now use it:
+
+    >>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere?")
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    Quonam modo?
+    Utrum igitur tibi litteram videor an totas paginas commovere?
+
+    >>> text_indentation("Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis?")
+    Non autem hoc:
+    igitur ne illud quidem.
+    Fortasse id optimum, sed ubi illud:
+    Plus semper voluptatis?
+
+    >>> text_indentation("Teneo, inquit, finem illi videri nihil dolere. Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.")
+    Teneo, inquit, finem illi videri nihil dolere.
+    Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+
+    >>> text_indentation("Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo stadia confecimus. Sin aliud quid voles, postea.")
+    Si id dicis, vicimus.
+    Inde sermone vario sex illa a Dipylo stadia confecimus.
+    Sin aliud quid voles, postea.
+
+    >>> text_indentation("   This is a test.   Is it working?   Yes, it is.   ")
+    This is a test.
+    Is it working?
+    Yes, it is.
+
+
