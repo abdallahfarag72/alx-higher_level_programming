@@ -72,5 +72,5 @@ class Square(Rectangle):
         """
         Returns a string representation of the Square instance
         """
-        return "[Square] {}/{}" \
+        return "[Square] {}/{}"\
             .format(self._Rectangle__width, self._Rectangle__height)
