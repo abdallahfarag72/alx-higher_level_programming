@@ -8,45 +8,31 @@ line by line and computes metrics
 
 import sys
 
+status_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
+status_count = {code: 0 for code in status_codes}
+file_size = 0
+line_count = 0
 
-def print_stats(total_size, status_codes):
-    """Print the computed statistics"""
-    print("File size: {}".format(total_size))
-    for code, count in sorted(status_codes.items()):
-        print("{}: {}".format(code, count))
+try:
+    for i, line in enumerate(sys.stdin, 1):
+        data = line.split()
+        if len(data) >= 2:
+            file_size += int(data[-1])
+            status = data[-2]
+            if status in status_count:
+                status_count[status] += 1
 
+        if i % 10 == 0:
+            print("File size: {:d}".format(file_size))
+            for code, count in sorted(status_count.items()):
+                if count > 0:
+                    print("{:s}: {:d}".format(code, count))
 
-def update_stats(line, total_size, status_codes):
-    """Update the statistics based on a line of input"""
-    try:
-        parts = line.split()
-        size = int(parts[-1])
-        code = int(parts[-2])
-        total_size += size
-        if code in status_codes:
-            status_codes[code] += 1
-        else:
-            status_codes[code] = 1
-    except (ValueError, IndexError):
-        pass
-    return total_size, status_codes
+except KeyboardInterrupt:
+    pass
 
-
-def compute_metrics():
-    """Compute metrics from input lines"""
-    count = 0
-    total_size = 0
-    status_codes = {}
-
-    try:
-        for line in sys.stdin:
-            total_size, status_codes = update_stats(
-                line, total_size, status_codes)
-            count += 1
-            if count % 10 == 0:
-                print_stats(total_size, status_codes)
-    except KeyboardInterrupt:
-        print_stats(total_size, status_codes)
-
-
-compute_metrics()
+finally:
+    print("File size: {:d}".format(file_size))
+    for code, count in sorted(status_count.items()):
+        if count > 0:
+            print("{:s}: {:d}".format(code, count))
